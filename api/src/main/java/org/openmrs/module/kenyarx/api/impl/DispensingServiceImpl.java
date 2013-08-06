@@ -17,18 +17,25 @@ package org.openmrs.module.kenyarx.api.impl;
 import org.openmrs.Concept;
 import org.openmrs.DrugOrder;
 import org.openmrs.Obs;
+import org.openmrs.Patient;
+import org.openmrs.api.APIException;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.kenyarx.DispensedOrder;
-import org.openmrs.module.kenyarx.KenyaRxConstants;
+import org.openmrs.module.kenyarx.Dispensing;
 import org.openmrs.module.kenyarx.api.DispensingService;
 import org.openmrs.module.kenyarx.api.db.DispensingDAO;
+import org.openmrs.module.kenyarx.mapping.ObjectObsMarshaller;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Implementation of the dispensing service
  */
 public class DispensingServiceImpl implements DispensingService {
+
+	@Autowired
+	private ObjectObsMarshaller objectObsMarshaller;
 
 	private DispensingDAO dispensingDAO;
 
@@ -41,25 +48,43 @@ public class DispensingServiceImpl implements DispensingService {
 	}
 
 	/**
-	 * @see org.openmrs.module.kenyarx.api.DispensingService#getDispensedOrder(org.openmrs.DrugOrder)
+	 * @see org.openmrs.module.kenyarx.api.DispensingService#getDispensingsForOrder(org.openmrs.DrugOrder)
 	 */
 	@Override
-	public DispensedOrder getDispensedOrder(DrugOrder drugOrder) {
-		Concept medDispConcept = Context.getConceptService().getConceptByUuid(KenyaRxConstants.DISPENSED_DRUG_CONCEPT_UUID);
-		List<Obs> obs = dispensingDAO.getObsByOrderAndConcept(drugOrder, medDispConcept);
+	public List<Dispensing> getDispensingsForOrder(DrugOrder drugOrder) throws APIException {
+		Concept concept = objectObsMarshaller.getConceptForClass(Dispensing.class);
+		List<Obs> obss = dispensingDAO.getObsByOrderAndConcept(drugOrder, concept);
 
-		// TODO convert obs into object
-
-		return null;
+		List<Dispensing> dispensings = new ArrayList<Dispensing>();
+		for (Obs obs : obss) {
+			try {
+				Dispensing dispensing = objectObsMarshaller.unmarshal(obs, Dispensing.class);
+				dispensing.setOrder(drugOrder);
+				dispensing.setDispensedDate(obs.getObsDatetime());
+				dispensings.add(dispensing);
+			}
+			catch (Exception ex) {
+				throw new APIException(ex);
+			}
+		}
+		return dispensings;
 	}
 
 	/**
-	 * @see DispensingService#saveDispensedOrder(org.openmrs.module.kenyarx.DispensedOrder)
-	 * @param dispensedOrder the dispensed order
+	 * @see DispensingService#saveDispensing(org.openmrs.module.kenyarx.Dispensing)
+	 * @param dispensing the dispensing
 	 */
 	@Override
-	public void saveDispensedOrder(DispensedOrder dispensedOrder) {
+	public void saveDispensing(Dispensing dispensing) {
+		try {
+			Patient patient = dispensing.getOrder().getPatient();
+			Obs newObs = objectObsMarshaller.marshal(dispensing, null, dispensing.getDispensedDate(), patient);
+			newObs.setOrder(dispensing.getOrder());
 
-		// TODO convert object into obs
+			Context.getObsService().saveObs(newObs, null);
+		}
+		catch (Exception ex) {
+			throw new APIException(ex);
+		}
 	}
 }

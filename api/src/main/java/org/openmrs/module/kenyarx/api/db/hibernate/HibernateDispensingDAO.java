@@ -55,6 +55,7 @@ public class HibernateDispensingDAO implements DispensingDAO {
 		return getCurrentSession().createCriteria(Obs.class)
 				.add(Restrictions.eq("order", order))
 				.add(Restrictions.eq("concept", concept))
+				.add(Restrictions.eq("voided", false))
 				.list();
 	}
 }

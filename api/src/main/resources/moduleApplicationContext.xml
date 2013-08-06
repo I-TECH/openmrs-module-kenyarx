@@ -4,6 +4,20 @@
 		xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
+	<!-- Class - Concept mappings -->
+
+	<bean id="dispensedOrderMapping" class="org.openmrs.module.kenyarx.mapping.ClassConceptMapping">
+		<property name="targetClass" value="org.openmrs.module.kenyarx.Dispensing" />
+		<property name="concept" value="1442AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+		<property name="memberMappings">
+			<map>
+				<entry key="dispensedConcept" value="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+				<entry key="dispensedQuantity" value="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+				<entry key="dispensedUnits" value="1444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+			</map>
+		</property>
+	</bean>
+
 	<!-- Module services -->
 
 	<bean id="kenyaRxPrescriptionService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">

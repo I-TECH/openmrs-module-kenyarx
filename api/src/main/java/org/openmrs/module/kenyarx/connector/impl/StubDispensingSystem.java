@@ -16,7 +16,7 @@ package org.openmrs.module.kenyarx.connector.impl;
 
 import org.openmrs.DrugOrder;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.kenyarx.DispensedOrder;
+import org.openmrs.module.kenyarx.Dispensing;
 import org.openmrs.module.kenyarx.api.DispensingService;
 import org.openmrs.module.kenyarx.connector.PharmacyConnector;
 import org.springframework.stereotype.Component;
@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * Implementation of the prescription handler which converts all drug orders (prescriptions) to dispensed orders,
+ * Implementation of the prescription handler which converts all drug orders (prescriptions) to dispensings,
  * with the following assumptions:
  *  1. The prescription is fulfilled exactly as requested
  *  2. The prescription is fulfilled immediately
@@ -38,13 +38,13 @@ public class StubDispensingSystem implements PharmacyConnector {
 	@Override
 	public void recordPrescription(DrugOrder order) {
 
-		DispensedOrder dispensedOrder = new DispensedOrder();
-		dispensedOrder.setOrder(order);
-		dispensedOrder.setConcept(order.getConcept());
-		dispensedOrder.setDose(order.getDose());
-		dispensedOrder.setUnits(order.getUnits());
-		dispensedOrder.setDispensedDate(new Date());
+		Dispensing dispensing = new Dispensing();
+		dispensing.setOrder(order);
+		dispensing.setDispensedConcept(order.getConcept());
+		dispensing.setDispensedQuantity(order.getDose());
+		dispensing.setDispensedUnits(order.getUnits());
+		dispensing.setDispensedDate(new Date());
 
-		Context.getService(DispensingService.class).saveDispensedOrder(dispensedOrder);
+		Context.getService(DispensingService.class).saveDispensing(dispensing);
 	}
 }

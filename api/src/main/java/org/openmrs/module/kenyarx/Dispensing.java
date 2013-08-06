@@ -22,15 +22,15 @@ import java.util.Date;
 /**
  * Represents the dispensing of a single drug
  */
-public class DispensedOrder {
+public class Dispensing {
 
 	private DrugOrder order;
 
-	private Concept concept;
+	private Concept dispensedConcept;
 
-	private Double dose;
+	private Double dispensedQuantity;
 
-	private String units;
+	private String dispensedUnits;
 
 	private Date dispensedDate;
 
@@ -42,28 +42,28 @@ public class DispensedOrder {
 		this.order = order;
 	}
 
-	public Concept getConcept() {
-		return concept;
+	public Concept getDispensedConcept() {
+		return dispensedConcept;
 	}
 
-	public void setConcept(Concept concept) {
-		this.concept = concept;
+	public void setDispensedConcept(Concept dispensedConcept) {
+		this.dispensedConcept = dispensedConcept;
 	}
 
-	public Double getDose() {
-		return dose;
+	public Double getDispensedQuantity() {
+		return dispensedQuantity;
 	}
 
-	public void setDose(Double dose) {
-		this.dose = dose;
+	public void setDispensedQuantity(Double dispensedQuantity) {
+		this.dispensedQuantity = dispensedQuantity;
 	}
 
-	public String getUnits() {
-		return units;
+	public String getDispensedUnits() {
+		return dispensedUnits;
 	}
 
-	public void setUnits(String units) {
-		this.units = units;
+	public void setDispensedUnits(String dispensedUnits) {
+		this.dispensedUnits = dispensedUnits;
 	}
 
 	public Date getDispensedDate() {

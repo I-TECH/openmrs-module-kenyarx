@@ -12,28 +12,17 @@
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
 
-package org.openmrs.module.kenyarx.api;
+package org.openmrs.module.kenyarx;
 
-import org.openmrs.DrugOrder;
-import org.openmrs.module.kenyarx.Dispensing;
-
-import java.util.List;
+import org.junit.Test;
 
 /**
- * Interface for dispensing services
+ * Tests for {@link KenyaRxConstants}
  */
-public interface DispensingService {
+public class KenyaRxConstantsTest {
 
-	/**
-	 * Gets the dispensings for the given drug order if there are any
-	 * @param drugOrder the drug order
-	 * @return the dispensings
-	 */
-	List<Dispensing> getDispensingsForOrder(DrugOrder drugOrder);
-
-	/**
-	 * Saves the given dispensing
-	 * @param dispensing the dispensing
-	 */
-	void saveDispensing(Dispensing dispensing);
+	@Test
+	public void integration() {
+		new KenyaRxConstantsTest();
+	}
 }

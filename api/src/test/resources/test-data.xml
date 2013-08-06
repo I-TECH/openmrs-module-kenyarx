@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+	<concept concept_id="1442" retired="false" datatype_id="4" class_id="10" is_set="true" creator="1" date_created="2004-08-12 00:00:00.0" version="0.1" changed_by="1" date_changed="2006-06-09 14:57:33.0" uuid="1442AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+	<concept_name concept_name_id="1442" concept_id="1442" name="CURRENT MEDICATION ORDER" locale="en" creator="1" date_created="2004-08-12 00:00:00.0" concept_name_type="FULLY_SPECIFIED" locale_preferred="1" voided="false" uuid="1442-name"/>
+
+	<concept concept_id="1282" retired="false" datatype_id="2" class_id="11" is_set="false" creator="1" date_created="2004-08-12 00:00:00.0" version="0.1" changed_by="1" date_changed="2006-06-09 14:57:33.0" uuid="1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+	<concept_name concept_name_id="1282" concept_id="1282" name="MEDICATION ORDERS" locale="en" creator="1" date_created="2004-08-12 00:00:00.0" concept_name_type="FULLY_SPECIFIED" locale_preferred="1" voided="false" uuid="1282-name"/>
+	<concept_set concept_set_id="1282" concept_id="1282" concept_set="1442" sort_weight="1" creator="1" date_created="2004-08-12 00:00:00.0" uuid="1282-set"/>
+
+	<concept concept_id="1443" retired="false" datatype_id="1" class_id="15" is_set="false" creator="1" date_created="2004-08-12 00:00:00.0" version="0.1" changed_by="1" date_changed="2006-06-09 14:57:33.0" uuid="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+	<concept_name concept_name_id="1443" concept_id="1443" name="MEDICATION DISPENSED" locale="en" creator="1" date_created="2004-08-12 00:00:00.0" concept_name_type="FULLY_SPECIFIED" locale_preferred="1" voided="false" uuid="1443-name"/>
+	<concept_numeric concept_id="1443" precise="false"/>
+	<concept_set concept_set_id="1443" concept_id="1443" concept_set="1442" sort_weight="2" creator="1" date_created="2004-08-12 00:00:00.0" uuid="1443-set"/>
+
+	<concept concept_id="1444" retired="false" datatype_id="3" class_id="15" is_set="false" creator="1" date_created="2004-08-12 00:00:00.0" version="0.1" changed_by="1" date_changed="2006-06-09 14:57:33.0" uuid="1444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+	<concept_name concept_name_id="1444" concept_id="1444" name="MEDICATION STRENGTH" locale="en" creator="1" date_created="2004-08-12 00:00:00.0" concept_name_type="FULLY_SPECIFIED" locale_preferred="1" voided="false" uuid="1444-name"/>
+	<concept_set concept_set_id="1444" concept_id="1444" concept_set="1442" sort_weight="2" creator="1" date_created="2004-08-12 00:00:00.0" uuid="1444-set"/>
+
+	<concept concept_id="71617" retired="false" datatype_id="4" class_id="3" is_set="false" creator="1" date_created="2004-08-12 00:00:00.0" version="0.1" changed_by="1" date_changed="2006-06-09 14:57:33.0" uuid="71617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+	<concept_name concept_name_id="71617" concept_id="71617" name="ASPIRIN" locale="en" creator="1" date_created="2004-08-12 00:00:00.0" concept_name_type="FULLY_SPECIFIED" locale_preferred="1" voided="false" uuid="71617-name"/>
+
+</dataset>

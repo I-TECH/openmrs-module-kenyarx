@@ -23,9 +23,4 @@ public class KenyaRxConstants {
 	 * Module ID
 	 */
 	public static final String MODULE_ID = "kenyarx";
-
-	/**
-	 * Concepts
-	 */
-	public static final String DISPENSED_DRUG_CONCEPT_UUID = "1442AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 }
